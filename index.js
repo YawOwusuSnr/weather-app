@@ -8,10 +8,14 @@ const region = document.querySelector('#region')
 const country = document.querySelector('#country')
 const localtime = document.querySelector('#localtime')
 const form = document.getElementById('form')
+const div = document.querySelector('.content')
 
 
 async function getWeather() {
-    const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=6639432899514dadb4d44210231907&q=${givenCity}`)
+    temp.textContent = 'loading...'
+    const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=6639432899514dadb4d44210231907&q=${givenCity}`, {
+        mode: 'cors'
+      })
     jsonData = await data.json()
     console.log(jsonData)
     const cityData = new Attributes(jsonData)
